@@ -30,7 +30,6 @@
   h1 { margin: 0 0 8px; font-size: 28px; letter-spacing: 1px; }
   .subtitle { color: var(--muted); font-size: 14px; }
 
-  /* 顶部 Tab 切换 */
   .tabs {
     display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;
     border-bottom: 1px solid var(--border); padding-bottom: 12px;
@@ -51,7 +50,6 @@
     padding: 16px 20px; border-radius: 10px; margin: 20px 0;
   }
 
-  /* 市场总览 */
   .overview {
     background: linear-gradient(135deg, #1e2a47, #1a1d24);
     border: 1px solid var(--border); border-radius: 14px;
@@ -67,7 +65,6 @@
   .overview-item .v { font-size: 16px; font-weight: 600; margin-top: 2px; }
   .overview-brief { font-size: 15px; margin-top: 16px; color: #d6dcea; }
 
-  /* 五大赛道卡片 */
   .sector-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;
     margin-bottom: 28px;
@@ -84,11 +81,6 @@
   .sector-stats .neu { color: var(--neutral); }
   .sector-top-title { font-size: 13.5px; color: var(--text); margin-top: 6px; line-height: 1.5; }
 
-  /* 面板：榜单 / 分类 */
-  .panel { display: none; }
-  .panel.active { display: block; }
-
-  /* 榜单面板 */
   .board {
     background: var(--card); border: 1px solid var(--border);
     border-radius: 14px; margin-bottom: 20px; overflow: hidden;
@@ -114,7 +106,6 @@
   .item-title a:hover { color: var(--accent); text-decoration: underline; }
   .item-heat { font-size: 12px; color: var(--warm); margin-top: 4px; }
 
-  /* 分类面板 - 赛道详情 */
   .sector-detail {
     background: var(--card); border: 1px solid var(--border);
     border-radius: 14px; margin-bottom: 20px; overflow: hidden;
@@ -131,7 +122,7 @@
   }
   .impact-row:hover { background: rgba(255,255,255,0.02); }
   .score-pill {
-    flex-shrink: 0; width: 52px; text-align: center;
+    flex-shrink: 0; width: 70px; text-align: center;
     padding: 4px 0; border-radius: 8px; font-size: 13px; font-weight: 700;
   }
   .score-p2 { background: #2d5a3d; color: #a3e7bd; }
@@ -173,6 +164,7 @@
 </div>
 
 <script>
+  // 数据仓库 Pages 的 latest.json 地址
   const DATA_URL = "https://katherynsun21-sketch.github.io/financial/data/latest.json";
 
   function escape(s) {
@@ -195,7 +187,6 @@
 
     let html = '';
 
-    // 顶部市场总览
     html += `
       <div class="overview">
         <div class="overview-label">🤖 AI · 今日盘面</div>
@@ -208,7 +199,6 @@
       </div>
     `;
 
-    // 五大赛道快速卡片
     const sectorNames = ["保险", "银行", "非银金融", "信贷", "财富管理"];
     html += '<div class="sector-grid">';
     for (const s of sectorNames) {
@@ -220,7 +210,7 @@
         else if (sc < 0) badCount++;
         else neuCount++;
       }
-      const topTitle = items[0] ? items[0].title : "暂无命中新闻";
+      const topTitle = items[0] ? items[0].title : "今日暂无相关新闻";
       html += `
         <div class="sector-card">
           <div class="sector-name">${escape(s)}</div>
@@ -235,7 +225,6 @@
     }
     html += '</div>';
 
-    // 每大赛道下面的详细新闻列表
     for (const s of sectorNames) {
       const items = bySector[s] || [];
       html += `
@@ -265,7 +254,7 @@
     }
 
     if (cls.error) {
-      html = `<div class="error">⚠️ AI 分类暂不可用：${escape(cls.error)}<br>以下仅展示原始榜单。</div>` + html;
+      html = `<div class="error">⚠️ AI 分类暂不可用: ${escape(cls.error)}<br>请检查 火山引擎 API Key / Endpoint 配置。下面仅展示原始榜单数据。</div>` + html;
     }
 
     return html;
@@ -326,8 +315,8 @@
            加载数据失败：${escape(err.message)}<br><br>
            可能原因：<br>
            1) 数据仓库 Pages 刚开启，等 1-2 分钟刷新；<br>
-           2) 数据仓库还没跑过 Actions，data/latest.json 不存在；<br>
-           3) 测试：<code style="word-break: break-all;">${DATA_URL}</code>
+           2) 数据仓库 Actions 还没跑，没有 data/latest.json；<br>
+           3) 测试链接：<code style="word-break:break-all;">${DATA_URL}</code>
          </div>`;
     });
 </script>
