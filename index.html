@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>财经新闻 · 五大赛道 · AI 局面分析</title>
+  <title>财经新闻 · 五大赛道 · 每日洞察</title>
   <style>
     :root {
       --bg: #0f1214;
@@ -15,8 +15,6 @@
       --primary: #4a9eff;
       --primary-bg: rgba(74,158,255,.12);
       --accent: #ff9a3c;
-      --ok: #31d0aa;
-      --danger: #ff6b6b;
       --shadow: 0 6px 24px rgba(0,0,0,.35);
     }
 
@@ -74,9 +72,9 @@
       letter-spacing: 0.5px;
     }
 
-    /* AI 局面分析
+    /* 整体局面
     --------------------------------------------------------- */
-    .situation {
+    .overall {
       padding: 24px;
       background: var(--panel);
       border: 1px solid var(--border);
@@ -84,172 +82,164 @@
       box-shadow: var(--shadow);
     }
 
-    .situation h3 {
+    .overall h3 {
       margin: 0 0 12px;
       font-size: 16px;
       color: var(--primary);
     }
 
-    .situation p {
+    .overall p {
       margin: 0 0 16px;
-      color: var(--text);
     }
 
-    .situation-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 16px;
+    .themes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
     }
 
-    .situation-card {
-      padding: 16px;
+    .themes span {
+      padding: 6px 14px;
       background: var(--panel-2);
       border: 1px solid var(--border);
-      border-radius: 12px;
-    }
-
-    .situation-card h4 {
-      margin: 0 0 6px;
-      font-size: 14px;
+      border-radius: 999px;
+      font-size: 13px;
       color: var(--accent);
     }
 
-    .situation-card p {
-      margin: 0;
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    .actions-list {
-      margin: 0;
-      padding-left: 18px;
-      color: var(--text);
-    }
-
-    .actions-list li { margin: 4px 0; }
-
-    @media (max-width: 800px) {
-      .situation-grid { grid-template-columns: 1fr; }
-    }
-
-    /* 赛道汇总
+    /* 赛道洞察卡片
     --------------------------------------------------------- */
-    .sectors-summary {
+    .sector-insights {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: 1fr 1fr;
       gap: 16px;
     }
 
-    .sector-summary {
+    @media (max-width: 800px) {
+      .sector-insights { grid-template-columns: 1fr; }
+    }
+
+    .sector-card {
       padding: 20px;
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 12px;
+      box-shadow: var(--shadow);
     }
 
-    .sector-summary h3 {
-      margin: 0 0 8px;
-      font-size: 16px;
+    .sector-card .head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
     }
 
-    .sector-summary .count {
-      font-size: 28px;
-      font-weight: 600;
+    .sector-card h3 {
+      margin: 0;
+      font-size: 17px;
+    }
+
+    .sector-card .count {
       color: var(--primary);
-    }
-
-    .sector-summary .sub {
-      color: var(--muted);
       font-size: 13px;
     }
 
-    .sector-summary .chips {
+    .sector-card .insight {
+      padding: 14px;
+      background: var(--panel-2);
+      border-left: 3px solid var(--primary);
+      border-radius: 8px;
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .sector-card .topics {
       margin-top: 12px;
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
     }
 
-    .chip {
-      display: inline-block;
+    .sector-card .topics span {
       padding: 3px 10px;
       background: var(--panel-2);
       border: 1px solid var(--border);
-      color: var(--muted);
       border-radius: 999px;
       font-size: 12px;
+      color: var(--muted);
     }
 
-    /* 新闻卡片
+    /* 新闻列表
     --------------------------------------------------------- */
-    .cards {
+    .news-list {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 14px;
+      gap: 10px;
+      margin-top: 16px;
     }
 
-    .card {
+    .news-item {
+      padding: 14px 16px;
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .news-item .title {
+      flex: 1;
+      color: var(--text);
+      font-size: 14px;
+      text-decoration: none;
+      line-height: 1.6;
+    }
+
+    .news-item .title:hover { color: var(--primary); }
+
+    .news-item .tag {
+      flex-shrink: 0;
+      padding: 2px 10px;
+      background: var(--primary-bg);
+      color: var(--primary);
+      border-radius: 999px;
+      font-size: 11px;
+      margin-top: 2px;
+    }
+
+    .news-item .source {
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 4px;
+    }
+
+    /* 今日动作
+    --------------------------------------------------------- */
+    .actions {
       padding: 20px;
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 12px;
-      transition: transform .15s ease, border-color .15s ease;
     }
 
-    .card:hover {
-      transform: translateY(-2px);
-      border-color: var(--primary);
-    }
-
-    .card h4 {
-      margin: 0 0 10px;
-      font-size: 15px;
-      color: var(--text);
-      line-height: 1.5;
-    }
-
-    .card a {
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    .card .meta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 16px;
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 10px 0;
-    }
-
-    .card .pill {
-      display: inline-block;
-      padding: 3px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      background: var(--primary-bg);
-      color: var(--primary);
-      border: 1px solid transparent;
-    }
-
-    .card .pill.topic {
-      background: rgba(255,154,60,.12);
+    .actions h3 {
+      margin: 0 0 12px;
+      font-size: 16px;
       color: var(--accent);
     }
 
-    .card .reason {
-      margin: 10px 0 0;
-      padding: 12px;
-      background: var(--panel-2);
-      border-left: 3px solid var(--primary);
-      border-radius: 8px;
-      font-size: 13px;
-      color: var(--muted);
+    .actions ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--text);
     }
 
-    /* 状态提示
-    --------------------------------------------------------- */
+    .actions li { margin: 6px 0; }
+
     .status {
       padding: 16px;
       background: var(--panel);
@@ -260,8 +250,8 @@
     }
 
     .status.error {
-      border-color: var(--danger);
-      color: var(--danger);
+      border-color: #ff6b6b;
+      color: #ff6b6b;
     }
 
     .hidden { display: none !important; }
@@ -270,32 +260,36 @@
 <body>
   <div class="container">
     <header class="hero">
-      <h1>财经新闻 · 五大赛道 · AI 局面分析</h1>
-      <p>保险 / 银行 / 非银金融 / 信贷 / 财富管理：每日抓取 + AI 整体局面分析。</p>
+      <h1>财经新闻 · 五大赛道 · 每日洞察</h1>
+      <p>保险 / 银行 / 非银金融 / 信贷 / 财富管理：AI 每赛道给一句话洞察。</p>
       <div class="meta" id="hero-meta">数据更新中…</div>
     </header>
 
-    <!-- 加载状态 -->
     <div class="status" id="status">正在抓取数据中…</div>
 
-    <!-- AI 整体局面分析 -->
-    <div class="hidden" id="situation-block">
-      <div class="section-title">AI 整体局面分析</div>
-      <div class="situation" id="situation"></div>
+    <!-- 整体局面 -->
+    <div class="hidden" id="overall-block">
+      <div class="section-title">AI 整体局面</div>
+      <div class="overall" id="overall"></div>
     </div>
 
-    <!-- 五大赛道汇总 -->
-    <div class="hidden" id="summary-block">
-      <div class="section-title">五大赛道今日汇总</div>
-      <div class="sectors-summary" id="sectors-summary"></div>
+    <!-- 分赛道每日洞察 -->
+    <div class="hidden" id="insights-block">
+      <div class="section-title">五大赛道 · 每日洞察</div>
+      <div class="sector-insights" id="sector-insights"></div>
     </div>
 
-    <!-- 各赛道新闻 -->
-    <div id="sector-blocks"></div>
+    <!-- 今日动作 -->
+    <div class="hidden" id="actions-block">
+      <div class="section-title">今日可执行动作</div>
+      <div class="actions" id="actions"></div>
+    </div>
   </div>
 
   <script>
     const JSON_URL = "https://katherynsun21-sketch.github.io/financial/data/latest.json";
+
+    const SECTORS = ["保险", "银行", "非金", "信贷", "财富"];
 
     function renderHero(meta) {
       const el = document.getElementById("hero-meta");
@@ -306,29 +300,24 @@
       const srcCount = meta.sources_count || "-";
       el.innerHTML =
         "更新时间：" + (date + " " + time) +
-        "　｜　共抓取 <b>" + total + "</b> 条新闻" +
+        "　｜　共 <b>" + total + "</b> 条新闻" +
         "　｜　来源数量 <b>" + srcCount + "</b>";
     }
 
-    function renderSituation(data) {
-      const block = document.getElementById("situation-block");
-      const el = document.getElementById("situation");
+    function renderOverall(data) {
+      const block = document.getElementById("overall-block");
+      const el = document.getElementById("overall");
       const sit = data.situation_analysis || {};
 
       block.classList.remove("hidden");
 
-      const overall = sit.overall || sit.overall_situation || "暂无 AI 局面分析待生成。";
-      const themes = Array.isArray(sit.core_themes) && sit.core_themes.length
-        ? sit.core_themes.slice(0, 6)
-        : [];
-      const sectorView = sit.sector_views || {};
-      const actions = Array.isArray(sit.today_actions) ? sit.today_actions : [];
-      const gen = sit.generated_by || "keyword_fallback";
+      const overall = sit.overall || sit.overall_situation || "暂无 AI 局面分析。";
+      const themes = Array.isArray(sit.core_themes) && sit.core_themes.length ? sit.core_themes.slice(0, 6) : [];
 
       el.innerHTML = "";
 
       const h3 = document.createElement("h3");
-      h3.textContent = "整体局面总览（" + gen + ")";
+      h3.textContent = "今日整体局面";
       el.appendChild(h3);
 
       const p = document.createElement("p");
@@ -336,113 +325,115 @@
       el.appendChild(p);
 
       if (themes.length) {
-        const themesBlock = document.createElement("div");
-        themesBlock.className = "situation-grid";
-        themesBlock.innerHTML =
-          '<div class="situation-card"><h4>核心主题</h4>' +
-          '<div>' +
-          themes.map(function (t) { return '<div style="margin:6px 0; font-size:14px;">· ' + t + '</div>'; }).join("") +
-          '</div></div>';
-        el.appendChild(themesBlock);
-      }
-
-      const viewsBlock = document.createElement("div");
-      viewsBlock.className = "situation-grid";
-      viewsBlock.innerHTML =
-        ["保险", "银行", "非金", "信贷", "财富"].map(function (sector) {
-          const view = sectorView[sector] || {};
-          return '<div class="situation-card"><h4>' + sector + '赛道观察</h4>' +
-            '<p>' + (view.observation || view.insight || "暂无观察点") + '</p>' +
-            '</div>';
-        }).join("");
-      el.appendChild(viewsBlock);
-
-      if (actions.length) {
-        const actWrap = document.createElement("div");
-        actWrap.className = "situation-grid";
-        actWrap.innerHTML =
-          '<div class="situation-card"><h4>今日可执行动作</h4>' +
-          '<ul class="actions-list">' +
-          actions.map(function (a) { return '<li>' + a + '</li>'; }).join("") +
-          '</ul></div>';
-        el.appendChild(actWrap);
+        const themesWrap = document.createElement("div");
+        themesWrap.className = "themes";
+        themes.forEach(function (t) {
+          const span = document.createElement("span");
+          span.textContent = "# " + t;
+          themesWrap.appendChild(span);
+        });
+        el.appendChild(themesWrap);
       }
     }
 
-    function renderSummary(data) {
-      const block = document.getElementById("summary-block");
-      const el = document.getElementById("sectors-summary");
+    function firstTruthy(obj, keys) {
+      for (let i = 0; i < keys.length; i++) {
+        if (obj[keys[i]]) return obj[keys[i]];
+      }
+      return "";
+    }
+
+    function renderSectorInsights(data) {
+      const block = document.getElementById("insights-block");
+      const el = document.getElementById("sector-insights");
+      const sit = data.situation_analysis || {};
+      const sectorViews = sit.sector_views || sit.sectors || {};
       const summary = data.sector_summary || {};
+      const bySector = data.by_sector || {};
 
       block.classList.remove("hidden");
       el.innerHTML = "";
 
-      ["保险", "银行", "非金", "信贷", "财富"].forEach(function (sector) {
+      SECTORS.forEach(function (sector) {
+        const view = sectorViews[sector] || {};
         const s = summary[sector] || {};
-        const count = s.count || 0;
-        const coverage = s.coverage || "数据不足";
-        const topicCounts = s.topic_counts || {};
-        const chipTexts = Object.keys(topicCounts).slice(0, 4);
+        const items = bySector[sector] || [];
+
+        const insightText =
+          firstTruthy(view, ["insight", "observation", "daily_insight"]) ||
+          "今日共 " + (s.count || 0) + " 条 " + sector + " 相关新闻，持续观察。";
+
+        const topics = s.topic_counts ? Object.keys(s.topic_counts).slice(0, 5) : [];
 
         const card = document.createElement("div");
-        card.className = "sector-summary";
+        card.className = "sector-card";
+
         card.innerHTML =
+          '<div class="head">' +
           '<h3>' + sector + '</h3>' +
-          '<div class="count">' + count + '</div>' +
-          '<div class="sub">' + coverage + '</div>' +
-          '<div class="chips">' +
-          chipTexts.map(function (t) { return '<span class="chip">' + t + ' ' + (topicCounts[t] || 0) + '</span>'; }).join("") +
-          '</div>';
+          '<span class="count">' + (s.count || 0) + ' 条新闻</span>' +
+          '</div>' +
+          '<div class="insight">' + insightText + '</div>';
+
+        if (topics.length) {
+          const topicsEl = document.createElement("div");
+          topicsEl.className = "topics";
+          topics.forEach(function (t) {
+            const span = document.createElement("span");
+            span.textContent = t;
+            topicsEl.appendChild(span);
+          });
+          card.appendChild(topicsEl);
+        }
+
+        if (items.length) {
+          const list = document.createElement("div");
+          list.className = "news-list";
+          items.slice(0, 8).forEach(function (item) {
+            const title = item.title || "";
+            const url = item.url || "#";
+            const source = item.source || "";
+            const topic = firstTruthy(item, ["topic_type", "event_type"]);
+
+            const row = document.createElement("div");
+            row.className = "news-item";
+            row.innerHTML =
+              '<div style="flex:1;">' +
+              '<a class="title" href="' + url + '" target="_blank" rel="noopener">' + title + '</a>' +
+              (source ? '<div class="source">来源：' + source + '</div>' : "") +
+              '</div>' +
+              (topic ? '<span class="tag">' + topic + '</span>' : "");
+            list.appendChild(row);
+          });
+          card.appendChild(list);
+        }
+
         el.appendChild(card);
       });
     }
 
-    function renderSectors(data) {
-      const container = document.getElementById("sector-blocks");
-      const bySector = data.by_sector || {};
+    function renderActions(data) {
+      const block = document.getElementById("actions-block");
+      const el = document.getElementById("actions");
+      const sit = data.situation_analysis || {};
+      const actions = Array.isArray(sit.today_actions) ? sit.today_actions : [];
 
-      ["保险", "银行", "非金", "信贷", "财富"].forEach(function (sector) {
-        const items = bySector[sector] || [];
-        if (!items.length) return;
+      if (!actions.length) return;
 
-        const wrap = document.createElement("div");
-        wrap.innerHTML = '<div class="section-title">' + sector + '（' + items.length + '）</div>';
+      block.classList.remove("hidden");
+      el.innerHTML = "";
 
-        const cards = document.createElement("div");
-        cards.className = "cards";
+      const h3 = document.createElement("h3");
+      h3.textContent = "今日可执行动作";
+      el.appendChild(h3);
 
-        items.slice(0, 15).forEach(function (item) {
-          const title = item.title || "";
-          const url = item.url || "#";
-          const source = item.source || "";
-          const topic = item.topic_type || item.event_type || "相关";
-          const reason = item.relevance_reason || item.reason || "";
-          const sectorAngle = item.sector_angle || "";
-
-          const card = document.createElement("div");
-          card.className = "card";
-          card.innerHTML =
-            '<h4><a href="' + url + '" target="_blank" rel="noopener">' + title + '</a></h4>' +
-            '<div class="meta-row">' +
-            '<span class="pill">' + sector + '</span>' +
-            (topic ? '<span class="pill topic">' + topic + '</span>' : "") +
-            (source ? '<span>' + source + '</span>' : "") +
-            '</div>' +
-            (reason ? '<div class="reason">归类原因：' + reason + '</div>' : "") +
-            (sectorAngle ? '<div class="reason">赛道观察：' + sectorAngle + '</div>' : "");
-
-          cards.appendChild(card);
-        });
-
-        wrap.appendChild(cards);
-        container.appendChild(wrap);
+      const ul = document.createElement("ul");
+      actions.forEach(function (a) {
+        const li = document.createElement("li");
+        li.textContent = a;
+        ul.appendChild(li);
       });
-    }
-
-    function showStatus(text, isError) {
-      const el = document.getElementById("status");
-      el.textContent = text;
-      el.classList.toggle("error", !!isError);
+      el.appendChild(ul);
     }
 
     fetch(JSON_URL, { cache: "no-store" })
@@ -453,12 +444,14 @@
       .then(function (data) {
         document.getElementById("status").classList.add("hidden");
         renderHero(data);
-        renderSituation(data);
-        renderSummary(data);
-        renderSectors(data);
+        renderOverall(data);
+        renderSectorInsights(data);
+        renderActions(data);
       })
       .catch(function (err) {
-        showStatus("数据加载失败：" + err.message, true);
+        const el = document.getElementById("status");
+        el.textContent = "数据加载失败：" + err.message;
+        el.classList.add("error");
       });
   </script>
 </body>
